@@ -19,9 +19,15 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface, Se
     }
 
     public function getServiceConfig() {
-        return array(
-            'host' => '127.0.0.1',
-            'port' => 4730
-        );
+        return array('servers' => array(
+            'client' => array(
+                'host' =>  '127.0.0.1',
+                'port' => 4730,
+            ),
+            'workers' => array(
+                'host' =>  '127.0.0.1',
+                'port' => 4730,
+            )
+        ));
     }
 }

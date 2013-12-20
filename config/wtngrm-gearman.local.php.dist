@@ -1,9 +1,30 @@
 <?php
 return array(
+    'service_manager' => array(
+        'factories' => array(
+            'Desyncr\Wtngrm\Gearman\Service\GearmanService'  => 'Desyncr\Wtngrm\Gearman\Factory\GearmanServiceFactory'
+        ),
+    ),
     'wtngrm' => array(
         'gearman-adapter' => array(
-            'host' =>  '127.0.0.1',
-            'port' => 4730
+            'servers' => array(
+                'client' => array(
+                    array(
+                        'host' =>  '127.0.0.1',
+                        'port' => 4730
+                    )
+                ),
+                'workers' => array(
+                    array(
+                        'host' =>  '127.0.0.1',
+                        'port' => 4730
+                    )
+                )
+            ),
+
+            'workers' => array(
+                'email.notification' => '\Core\Worker\MailNotificationWorker'
+            )
         )
     )
 );
