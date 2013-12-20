@@ -10,15 +10,20 @@ class WorkerController extends AbstractActionController {
             throw new \RuntimeException('You can call this action from a webspace');
         }
 
-        $worker = $this->getRequest()->getParam('workerid');
-        $gs = $this->getServiceLocator()->get('Desyncr\Wtngrm\Gearman\Service\GearmanService');
+        $workerName = $this->getRequest()->getParam('workerid');
+        $gs = $this->getServiceLocator()->get('Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService');
 
         $workers = $gs->getOption('workers');
 
-        if (in_array($worker, array_keys($workers)) && in_array('Desyncr\Wtngrm\Worker\WorkerInterface', class_implements($workers[$worker]))) {
-            $gs->register($worker, $workers[$worker] . '::execute');
+        if (in_array($workerName, array_keys($workers)) && in_array('Desyncr\Wtngrm\Worker\WorkerInterface', class_implements($workers[$workerName]))) {
+            $worker = new $workers[$workerName];
+            $sm = $this->getServiceLocator();
 
-            while($gs->work()) {}
+            $gs->add($workerName, function($job) use ($worker, $sm) {
+                $worker->execute($job, $sm);
+            });
+
+            while($gs->dispatch()) {}
         }
     }
 }
