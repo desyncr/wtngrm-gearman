@@ -33,6 +33,6 @@ class GearmanService extends Wtngrm\AbstractService {
     }
 
     public function work() {
-        $this->worker->work();
+        return $this->worker->work();
     }
 }
