@@ -7,11 +7,14 @@ class GearmanService extends Wtngrm\AbstractService
 {
     protected $instance = null;
 
-    public function __construct($options)
-    {
+    public function __construct($gearman, $options) {
         $this->setOptions($options);
+        $this->instance = $gearman;
 
-        $this->instance = new \GearmanClient();
+        if (!count($this->servers['client'])) {
+            throw new \Exception('Define at least a client Gearman server.');
+        }
+
         foreach ($this->servers['client'] as $server) {
             $this->instance->addServer($server['host'], $server['port']);
         }
