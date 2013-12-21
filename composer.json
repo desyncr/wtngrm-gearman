@@ -1,14 +1,31 @@
 {
     "name": "desyncr/wtngrm-gearman",
-    "version":"0.0.1",
-    "description":"queue manager gearman adapter",
-    "require" : {
-        "php" : ">=5.3.0",
-        "desyncr/wtngrm" : "dev-master"
-
+    "version": "0.0.1",
+    "description": "Zend2 Module for Qeueuing/Background jobs servers - Gearman adapter",
+    "type": "module",
+    "license": "GPL-3.0+",
+    "homepage": "http://github.com/desyncr/wtngrm-gearman",
+    "keywords": [
+        "zend2", "zf2", "module", "queue", "gearman", "beanstalk"
+    ],
+    "authors": [
+        {
+            "name": "Dario Cavuotti",
+            "email": "dc@syncr.com.ar",
+            "homepage": "http://me.syncr.com.ar",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendframework": "2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     },
     "autoload": {
-        "psr-0" : {
+        "psr-0": {
             "Desyncr\\Wtngrm\\Gearman": "src/"
         }
     }
