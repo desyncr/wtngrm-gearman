@@ -12,6 +12,7 @@ class GearmanServiceFactory extends Wtngrm\AbstractServiceFactory implements Fac
 
         parent::createService($serviceLocator);
 
+        $service = new GearmanService();
         $options = isset($this->config[$this->configuration_key]) ? $this->config[$this->configuration_key] : array();
 
         return new GearmanService($options);

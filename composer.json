@@ -16,10 +16,17 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "http://github.com/desyncr/wtngrm.git"
+        }
+    ],
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.0",
-        "zendframework/zendframework": "2.*"
+        "zendframework/zendframework": "2.*",
+        "desyncr/wtngrm": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
