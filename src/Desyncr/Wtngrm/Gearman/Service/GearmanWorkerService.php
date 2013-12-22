@@ -3,29 +3,26 @@ namespace Desyncr\Wtngrm\Gearman\Service;
 use Desyncr\Wtngrm\Service as Wtngrm;
 
 class GearmanWorkerService extends Wtngrm\AbstractService {
-    protected $worker = null;
+    protected $instance = null;
 
-    public function __construct($options) {
+    public function __construct($gearman, $options) {
         $this->setOptions($options);
+        $this->instance = $gearman;
 
-        $this->instance = new \GearmanWorker();
+        if (!count($this->servers['workers'])) {
+            throw new \Exception('Define at least a worker Gearman server.');
+        }
+
         foreach ($this->servers['workers'] as $server) {
             $this->instance->addServer($server['host'], $server['port']);
         }
     }
 
     public function add($function, $worker) {
-        if (!$this->worker) {
-            $this->worker = new \GearmanWorker();
-            foreach ($this->servers['workers'] as $server) {
-                $this->worker->addServer($server['host'], $server['port']);
-            }
-        }
-
-        $this->worker->addFunction($function, $worker);
+        $this->instance->addFunction($function, $worker);
     }
 
     public function dispatch() {
-        return $this->worker->work();
+        return $this->instance->work();
     }
 }
