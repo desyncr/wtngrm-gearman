@@ -29,7 +29,8 @@
         "desyncr/wtngrm": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "3.7.28",
+        "whatthejeff/nyancat-phpunit-resultprinter": "~1.2"
     },
     "autoload": {
         "psr-0": {
