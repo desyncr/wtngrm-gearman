@@ -1,11 +1,14 @@
 <?php
 namespace Desyncr\Wtngrm\Gearman\Service;
+
 use Desyncr\Wtngrm\Service as Wtngrm;
 
-class GearmanWorkerService extends Wtngrm\AbstractService {
+class GearmanWorkerService extends Wtngrm\AbstractService
+{
     protected $worker = null;
 
-    public function __construct($options) {
+    public function __construct($options)
+    {
         $this->setOptions($options);
 
         $this->instance = new \GearmanWorker();
@@ -14,7 +17,8 @@ class GearmanWorkerService extends Wtngrm\AbstractService {
         }
     }
 
-    public function add($function, $worker) {
+    public function add($function, $worker)
+    {
         if (!$this->worker) {
             $this->worker = new \GearmanWorker();
             foreach ($this->servers['workers'] as $server) {
@@ -25,7 +29,8 @@ class GearmanWorkerService extends Wtngrm\AbstractService {
         $this->worker->addFunction($function, $worker);
     }
 
-    public function dispatch() {
+    public function dispatch()
+    {
         return $this->worker->work();
     }
 }

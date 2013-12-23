@@ -2,10 +2,9 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Desyncr\Wtngrm\Gearman\Controller\Worker'    => 'Desyncr\Wtngrm\Gearman\Controller\WorkerController',
+            'Desyncr\Wtngrm\Gearman\Controller\Worker' => 'Desyncr\Wtngrm\Gearman\Controller\WorkerController',
         )
     ),
-
     'console' => array(
         'router' => array(
             'routes' => array(
