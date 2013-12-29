@@ -49,9 +49,19 @@ class GearmanServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $sm = $this->getMockBuilder('Zend\ServiceManager\ServiceLocatorInterface', array('get', 'has'))
                     ->getMock();
 
+        $gearmanMock = $this->getMockBuilder('GearmanClient', array('addServers'))->getMock();
+        $gearmanMock->expects($this->any())
+            ->method('addServers')
+            ->will($this->returnValue(true));
+
+        $map = array(
+            array('Config', $this->config),
+            array('Desyncr\Wtngrm\Gearman\Client\GearmanClient', $gearmanMock)
+        );
+
         $sm->expects($this->any())
             ->method('get')
-            ->will($this->returnValue($this->config));
+            ->will($this->returnValueMap($map));
 
         $obj = $this->object->createService($sm);
 
@@ -69,9 +79,19 @@ class GearmanServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $sm = $this->getMockBuilder('Zend\ServiceManager\ServiceLocatorInterface', array('get', 'has'))
                     ->getMock();
 
+        $gearmanMock = $this->getMockBuilder('GearmanClient', array('addServers'))->getMock();
+        $gearmanMock->expects($this->any())
+            ->method('addServer')
+            ->will($this->returnValue(true));
+
+        $map = array(
+            array('Config', $this->config),
+            array('Desyncr\Wtngrm\Gearman\Client\GearmanClient', $gearmanMock)
+        );
+
         $sm->expects($this->any())
             ->method('get')
-            ->will($this->returnValue($this->config));
+            ->will($this->returnValueMap($map));
 
         $obj = $this->object->createService($sm);
 
