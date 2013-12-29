@@ -17,7 +17,7 @@ class GearmanWorkerService extends Wtngrm\AbstractService
         }
     }
 
-    public function add($function, $worker)
+    public function add($function, $worker, $target = null)
     {
         if (!$this->worker) {
             $this->worker = new \GearmanWorker();
@@ -31,6 +31,12 @@ class GearmanWorkerService extends Wtngrm\AbstractService
 
     public function dispatch()
     {
-        return $this->worker->work();
+        try {
+            $res = $this->worker->work();
+        } catch (\Exception $e) {
+            return false;
+        }
+
+        return $res;
     }
 }
