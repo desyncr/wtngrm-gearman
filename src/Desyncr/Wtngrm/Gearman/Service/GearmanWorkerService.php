@@ -21,13 +21,13 @@ class GearmanWorkerService extends Wtngrm\AbstractService {
 
     public function add($function, $worker, $target = null)
     {
-        $this->worker->addFunction($function, $worker);
+        $this->instance->addFunction($function, $worker);
     }
 
     public function dispatch()
     {
         try {
-            $res = $this->worker->work();
+            $res = $this->instance->work();
         } catch (\Exception $e) {
             return false;
         }
