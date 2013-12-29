@@ -11,8 +11,8 @@
         backupGlobals="false"
         syntaxCheck="true"
         >
-    <testsuite name="Wtngrm tests">
-        <directory>./tests/WtngrmTest</directory>
+    <testsuite name="WtngrmGearman tests">
+        <directory>./tests/WtngrmGearmanTest</directory>
     </testsuite>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">

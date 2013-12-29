@@ -85,6 +85,9 @@ class GearmanWorkerServiceTest extends \PHPUnit_Framework_TestCase
     public function testDispatchMultipleJobs()
     {
 
+        $key = 'test.job';
+        $job = array(1, 2, 3, 4, 5);
+
         $this->mock->expects($this->exactly(5))
                     ->method('addFunction');
 

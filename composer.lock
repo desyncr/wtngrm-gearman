@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "39c2062d8e17f2e00d2e59d495f202db",
+    "hash": "53a99b176d2c014250dd2592684e811b",
     "packages": [
         {
             "name": "desyncr/wtngrm",
@@ -61,20 +61,20 @@
         },
         {
             "name": "zendframework/zendframework",
-            "version": "dev-develop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "dcaa8ff8f77f42dc8070f30f9d891ebb300fa5ad"
+                "reference": "9ff45735c699dde3d5f4b719e0b01c00c855c0e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/dcaa8ff8f77f42dc8070f30f9d891ebb300fa5ad",
-                "reference": "dcaa8ff8f77f42dc8070f30f9d891ebb300fa5ad",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/9ff45735c699dde3d5f4b719e0b01c00c855c0e9",
+                "reference": "9ff45735c699dde3d5f4b719e0b01c00c855c0e9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23"
+                "php": ">=5.3.3"
             },
             "replace": {
                 "zendframework/zend-authentication": "self.version",
@@ -134,11 +134,8 @@
                 "fabpot/php-cs-fixer": "*@dev",
                 "ircmaxell/random-lib": "dev-master",
                 "ircmaxell/security-lib": "dev-master",
-                "mikey179/vfsstream": "1.2.*",
                 "ocramius/proxy-manager": "0.4.*",
-                "phpunit/phpunit": "3.7.*",
-                "satooshi/php-coveralls": "dev-master",
-                "sebastianbergmann/phpcov": "1.1.0"
+                "phpunit/phpunit": "3.7.*"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine Annotations >=1.0 for annotation features",

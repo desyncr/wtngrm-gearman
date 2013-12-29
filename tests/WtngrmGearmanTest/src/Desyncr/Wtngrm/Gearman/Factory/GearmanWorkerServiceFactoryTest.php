@@ -20,7 +20,7 @@ class GearmanWorkerServiceFactoryTest extends \PHPUnit_Framework_TestCase
        $servers = array('servers' =>
                         array('workers' =>
                             array(
-                               array('host' => '127.0.0.1', 1111)
+                               array('host' => '127.0.0.1', 'port' => 1111)
                            )
                        )
                    );
@@ -49,9 +49,20 @@ class GearmanWorkerServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $sm = $this->getMockBuilder('Zend\ServiceManager\ServiceLocatorInterface', array('get', 'has'))
                     ->getMock();
 
+        $gearmanMock = $this->getMockBuilder('GearmanWorker', 'addServer')->getMock();
+
+        $gearmanMock->expects($this->any())
+            ->method('addServer')
+            ->will($this->returnValue(true));
+
+        $map = array(
+            array('Config' , $this->config),
+            array('Desyncr\Wtngrm\Gearman\Worker\GearmanWorker', $gearmanMock)
+        );
+
         $sm->expects($this->any())
             ->method('get')
-            ->will($this->returnValue($this->config));
+            ->will($this->returnValueMap($map));
 
         $obj = $this->object->createService($sm);
 
@@ -69,9 +80,19 @@ class GearmanWorkerServiceFactoryTest extends \PHPUnit_Framework_TestCase
         $sm = $this->getMockBuilder('Zend\ServiceManager\ServiceLocatorInterface', array('get', 'has'))
                     ->getMock();
 
+        $gearmanMock = $this->getMockBuilder('GearmanWorker', array('addServer'))->getMock();
+        $gearmanMock->expects($this->any())
+            ->method('addServer')
+            ->will($this->returnValue(true));
+
+        $map = array(
+            array('Config', $this->config),
+            array('Desyncr\Wtngrm\Gearman\Worker\GearmanWorker', $gearmanMock)
+        );
+
         $sm->expects($this->any())
             ->method('get')
-            ->will($this->returnValue($this->config));
+            ->will($this->returnValueMap($map));
 
         $obj = $this->object->createService($sm);
 

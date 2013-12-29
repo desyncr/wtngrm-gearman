@@ -15,7 +15,7 @@ class GearmanWorkerServiceFactory extends Wtngrm\AbstractServiceFactory implemen
 
         parent::createService($serviceLocator);
 
-        $gearman = new \GearmanWorker;
+        $gearman = $serviceLocator->get('Desyncr\Wtngrm\Gearman\Worker\GearmanWorker');
         $options = isset($this->config[$this->configuration_key]) ? $this->config[$this->configuration_key] : array();
 
         return new GearmanWorkerService($gearman, $options);
