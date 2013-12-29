@@ -55,7 +55,6 @@ class GearmanServiceFactoryTest extends \PHPUnit_Framework_TestCase
 
         $obj = $this->object->createService($sm);
 
-
         $this->
             assertInstanceOf('Desyncr\Wtngrm\Gearman\Service\GearmanService', $obj);
 

@@ -10,7 +10,8 @@ class GearmanServiceFactory extends Wtngrm\AbstractServiceFactory implements Fac
 {
     protected $configuration_key = 'gearman-adapter';
 
-    public function createService(ServiceLocatorInterface $serviceLocator) {
+    public function createService(ServiceLocatorInterface $serviceLocator)
+    {
         parent::createService($serviceLocator);
 
         $gearman = new \GearmanClient();

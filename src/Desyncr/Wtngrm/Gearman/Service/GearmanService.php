@@ -7,7 +7,8 @@ class GearmanService extends Wtngrm\AbstractService
 {
     protected $instance = null;
 
-    public function __construct($gearman, $options) {
+    public function __construct($gearman, $options)
+    {
         $this->setOptions($options);
         $this->instance = $gearman;
 

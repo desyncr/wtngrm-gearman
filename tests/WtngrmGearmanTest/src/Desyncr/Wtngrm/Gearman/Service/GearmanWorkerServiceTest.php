@@ -12,7 +12,7 @@ class GearmanWorkerServiceTest extends \PHPUnit_Framework_TestCase
     protected $object;
     protected $mock;
     protected $defaults =
-            array('servers' => 
+            array('servers' =>
                     array('workers' =>
                         array(
                              array('host' => '127.0.0.1', 'port' => 4730)
@@ -63,7 +63,6 @@ class GearmanWorkerServiceTest extends \PHPUnit_Framework_TestCase
 
     }
 
-
     /**
      * @covers Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService::dispatch
      */
@@ -89,7 +88,7 @@ class GearmanWorkerServiceTest extends \PHPUnit_Framework_TestCase
         $this->mock->expects($this->exactly(5))
                     ->method('addFunction');
 
-        for ($i = 0 ; $i <= 4 ; $i++ ) {
+        for ($i = 0 ; $i <= 4 ; $i++) {
             $this->object->add($key . $i, $job[$i]);
         }
 

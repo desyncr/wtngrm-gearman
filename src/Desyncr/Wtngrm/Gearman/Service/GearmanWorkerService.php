@@ -3,10 +3,12 @@ namespace Desyncr\Wtngrm\Gearman\Service;
 
 use Desyncr\Wtngrm\Service as Wtngrm;
 
-class GearmanWorkerService extends Wtngrm\AbstractService {
+class GearmanWorkerService extends Wtngrm\AbstractService
+{
     protected $instance = null;
 
-    public function __construct($gearman, $options) {
+    public function __construct($gearman, $options)
+    {
         $this->setOptions($options);
         $this->instance = $gearman;
 

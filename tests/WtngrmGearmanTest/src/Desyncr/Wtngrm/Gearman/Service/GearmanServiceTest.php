@@ -12,7 +12,7 @@ class GearmanServiceTest extends \PHPUnit_Framework_TestCase
     protected $object;
     protected $mock;
     protected $defaults =
-            array('servers' => 
+            array('servers' =>
                     array('client' =>
                         array(
                              array('host' => '127.0.0.1', 'port' => 4730)
@@ -63,7 +63,6 @@ class GearmanServiceTest extends \PHPUnit_Framework_TestCase
 
     }
 
-
     /**
      * @covers Desyncr\Wtngrm\Gearman\Service\GearmanService::dispatch
      */
@@ -86,7 +85,7 @@ class GearmanServiceTest extends \PHPUnit_Framework_TestCase
     public function testDispatchMultipleJobs()
     {
 
-        for ($i = 0 ; $i <= 4 ; $i++ ) {
+        for ($i = 0 ; $i <= 4 ; $i++) {
             $this->object->add($key . $i, $job[$i]);
         }
 
