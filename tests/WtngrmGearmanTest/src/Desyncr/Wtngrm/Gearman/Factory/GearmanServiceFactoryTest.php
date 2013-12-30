@@ -17,13 +17,13 @@ class GearmanServiceFactoryTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-       $servers = array('servers' =>
-                        array('client' =>
-                            array(
-                               array('host' => '127.0.0.1', 1111)
-                           )
+        $servers = array('servers' =>
+                       array('client' =>
+                           array('host' => '127.0.0.1', 'port' => 1111)
                        )
                    );
+
+
        $gearman = array(
            'gearman-adapter' => $servers
        );

@@ -20,7 +20,7 @@ class GearmanWorkerServiceFactoryTest extends \PHPUnit_Framework_TestCase
        $servers = array('servers' =>
                         array('workers' =>
                             array(
-                               array('host' => '127.0.0.1', 1111)
+                               array('host' => '127.0.0.1', 'port' => 1111)
                            )
                        )
                    );

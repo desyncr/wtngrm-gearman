@@ -24,7 +24,7 @@ class GearmanService extends Wtngrm\AbstractService
     public function dispatch()
     {
         foreach ($this->jobs as $job) {
-            $this->instance->doBackground($job->getId(), json_encode($job->serialize()));
+            $this->instance->doBackground($job->getId(), $job->serialize());
         }
     }
 }
