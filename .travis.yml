@@ -5,6 +5,7 @@ php:
   - 5.3
 
 before_script:
+  - sudo apt-get install libboost-all-dev
   - wget https://launchpad.net/gearmand/1.2/1.1.11/+download/gearmand-1.1.11.tar.gz
   - tar xf gearmand-1.1.11.tar.gz
   - cd gearmand-1.1.11
