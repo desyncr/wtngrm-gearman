@@ -5,6 +5,7 @@ php:
   - 5.3
 
 before_script:
+  - sudo apt-get install libgearman
   - yes | pecl install gearman
   - wget http://getcomposer.org/composer.phar
   - php composer.phar install
