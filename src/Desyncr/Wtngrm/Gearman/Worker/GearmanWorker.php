@@ -9,6 +9,12 @@ abstract class GearmanWorker extends AbstractWorker
 
     public function setUp($sm, $job) {
         parent::setUp($sm, $job);
-        $this->workload = json_decode($this->job->workload(), true);
+
+        /* HACK for gearmand version ~0.2 */
+        if (is_object($this->job)) {
+            $this->workload = json_decode($this->job->workload(), true);
+        } else {
+            $this->workload = $this->job;
+        }
     }
 }
