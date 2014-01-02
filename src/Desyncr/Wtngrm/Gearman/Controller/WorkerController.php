@@ -28,7 +28,9 @@ class WorkerController extends AbstractActionController
             $gs->add(
                 $workerName,
                 function ($job) use ($worker, $sm) {
-                    $worker->execute($job, $sm);
+                    $worker->setUp($sm, $job);
+                    $worker->execute($job);
+                    $worker->tearDown();
                 }
             );
 
