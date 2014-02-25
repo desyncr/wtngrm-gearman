@@ -17,14 +17,14 @@ class GearmanService extends Wtngrm\AbstractService
         }
 
         foreach ($this->servers['client'] as $server) {
-            $this->instance->addServer($server['host'], $server['port']);
+            @$this->instance->addServer($server['host'], $server['port']);
         }
     }
 
     public function dispatch()
     {
         foreach ($this->jobs as $job) {
-            $this->instance->doBackground($job->getId(), $job->serialize());
+            @$this->instance->doBackground($job->getId(), $job->serialize());
         }
     }
 }
