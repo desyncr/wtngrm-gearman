@@ -49,7 +49,7 @@ class GearmanWorkerService extends AbstractGearmanService
 
         set_error_handler(array($this, 'errorHandler'));
         foreach ($this->servers['workers'] as $server) {
-            $this->instance->addServer($server['host'], $server['port']);
+            @$this->instance->addServer($server['host'], $server['port']);
         }
         restore_error_handler();
     }
