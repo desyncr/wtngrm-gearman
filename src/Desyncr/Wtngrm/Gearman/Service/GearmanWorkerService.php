@@ -1,12 +1,43 @@
 <?php
+/**
+ * General
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  General
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
 namespace Desyncr\Wtngrm\Gearman\Service;
 
-use Desyncr\Wtngrm\Service as Wtngrm;
-
-class GearmanWorkerService extends Wtngrm\AbstractService
+/**
+ * Desyncr\Wtngrm\Gearman\Service
+ *
+ * @category General
+ * @package  Desyncr\Wtngrm\Gearman\Service
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @link     https://github.com/desyncr
+ */
+class GearmanWorkerService extends AbstractGearmanService
 {
+    /**
+     * @var null
+     */
     protected $instance = null;
 
+    /**
+     * Returns a new instance of GearmanWorkerService
+     *
+     * @param Object $gearman Gearman instance
+     * @param Array  $options Options array
+     *
+     * @throws \Exception
+     * @return GearmanWorkerService
+     */
     public function __construct($gearman, $options)
     {
         $this->setOptions($options);
@@ -16,24 +47,39 @@ class GearmanWorkerService extends Wtngrm\AbstractService
             throw new \Exception('Define at least a worker Gearman server.');
         }
 
+        set_error_handler(array($this, 'errorHandler'));
         foreach ($this->servers['workers'] as $server) {
             $this->instance->addServer($server['host'], $server['port']);
         }
+        restore_error_handler();
     }
 
+    /**
+     * Adds a function to the worker
+     *
+     * @param String $function Function id
+     * @param Mixed  $worker   A gearman worker
+     * @param null   $target   Unused
+     *
+     * @return \Desyncr\Wtngrm\Job\BaseJob|void
+     */
     public function add($function, $worker, $target = null)
     {
+        set_error_handler(array($this, 'errorHandler'));
         $this->instance->addFunction($function, $worker);
+        restore_error_handler();
     }
 
+    /**
+     * Dispatchs a job to a worker
+     *
+     * @return bool
+     */
     public function dispatch()
     {
-        try {
-            $res = $this->instance->work();
-        } catch (\Exception $e) {
-            return false;
-        }
-
+        set_error_handler(array($this, 'errorHandler'));
+        $res = $this->instance->work();
+        restore_error_handler();
         return $res;
     }
 }
