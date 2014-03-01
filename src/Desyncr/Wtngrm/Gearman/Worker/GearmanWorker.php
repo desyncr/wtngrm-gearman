@@ -14,6 +14,7 @@
 namespace Desyncr\Wtngrm\Gearman\Worker;
 
 use Desyncr\Wtngrm\Worker\AbstractWorker;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Desyncr\Wtngrm\Gearman\Worker
@@ -27,27 +28,52 @@ use Desyncr\Wtngrm\Worker\AbstractWorker;
 abstract class GearmanWorker extends AbstractWorker
 {
     /**
-     * @var null
+     * @var Array
      */
-    protected $workload = null;
+    protected $workload = array();
 
     /**
      * setUp
      *
-     * @param Object $sm  Service locator instance
-     * @param Object $job Gearman job
+     * @param ServiceLocatorInterface $sm  Service locator instance
+     * @param Object                  $job Gearman job
      *
-     * @return mixed
+     * @return null
      */
-    public function setUp($sm, $job)
+    public function setUp(ServiceLocatorInterface $sm, $job)
     {
         parent::setUp($sm, $job);
 
         /* HACK for gearmand version ~0.2 */
-        if (is_object($this->job)) {
-            $this->workload = json_decode($this->job->workload(), true);
+        $job = $this->getJob();
+        if (is_object($job)) {
+            $workload = json_decode($job->workload(), true);
         } else {
-            $this->workload = $this->job;
+            $workload = $job;
         }
+
+        $this->setWorkload($workload);
+    }
+
+    /**
+     * setWorkload
+     *
+     * @param Array $workload Workload
+     *
+     * @return null
+     */
+    public function setWorkload(Array $workload)
+    {
+        $this->workload = $workload;
+    }
+
+    /**
+     * getWorkload
+     *
+     * @return array
+     */
+    public function getWorkload()
+    {
+        return $this->workload;
     }
 }

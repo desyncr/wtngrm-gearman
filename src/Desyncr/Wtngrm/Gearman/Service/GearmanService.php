@@ -13,6 +13,8 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Service;
 
+use Desyncr\Wtngrm\Job\JobInterface;
+
 /**
  * Desyncr\Wtngrm\Gearman\Service
  *
@@ -25,11 +27,6 @@ namespace Desyncr\Wtngrm\Gearman\Service;
 class GearmanService extends AbstractGearmanService
 {
     /**
-     * @var null
-     */
-    protected $instance = null;
-
-    /**
      * Returns a GearmanService instance
      *
      * @param Object $gearman Gearman Service instance
@@ -40,16 +37,22 @@ class GearmanService extends AbstractGearmanService
     public function __construct($gearman, $options)
     {
         $this->setOptions($options);
-        $this->instance = $gearman;
+        $this->setGearmanInstance($gearman);
 
-        if (!count($this->servers['client'])) {
+        $servers = $this->getServers('client');
+        if (!count($servers)) {
             throw new \Exception('Define at least a client Gearman server.');
         }
 
         set_error_handler(array($this, 'errorHandler'));
-        foreach ($this->servers['client'] as $server) {
-            @$this->instance->addServer($server['host'], $server['port']);
-        }
+        $instance = $this->getGearmanInstance();
+
+        array_map(
+            function ($server) use ($instance) {
+                $instance->addServer($server['host'], $server['port']);
+            },
+            $servers
+        );
         restore_error_handler();
     }
 
@@ -61,9 +64,14 @@ class GearmanService extends AbstractGearmanService
     public function dispatch()
     {
         set_error_handler(array($this, 'errorHandler'));
-        foreach ($this->jobs as $job) {
-            @$this->instance->doBackground($job->getId(), $job->serialize());
-        }
+        $instance = $this->getGearmanInstance();
+
+        array_map(
+            function (JobInterface $job) use ($instance) {
+                $instance->doBackground($job->getId(), $job->serialize());
+            },
+            $this->getJobs()
+        );
         restore_error_handler();
     }
 }

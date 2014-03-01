@@ -12,6 +12,7 @@
  * @link     https://github.com/desyncr
  */
 namespace Desyncr\Wtngrm\Gearman\Service;
+
 use Desyncr\Wtngrm\Service\AbstractService;
 
 /**
@@ -25,6 +26,69 @@ use Desyncr\Wtngrm\Service\AbstractService;
  */
 abstract class AbstractGearmanService extends AbstractService
 {
+    /**
+     * @var Object Gearman instance
+     */
+    protected $instance = null;
+
+    /**
+     * setGearmanInstance
+     *
+     * @param Object $instance Gearman instance
+     *
+     * @return mixed
+     */
+    public function setGearmanInstance($instance)
+    {
+        $this->instance = $instance;
+    }
+
+    /**
+     * getGearmanInstance
+     *
+     * @return mixed
+     */
+    public function getGearmanInstance()
+    {
+        return $this->instance;
+    }
+
+    /**
+     * getServers
+     *
+     * @param String $type Servers type (ie: client, workers)
+     *
+     * @return Array
+     */
+    public function getServers($type)
+    {
+        $servers = $this->servers ?: array();
+        if ($type) {
+            $servers = isset($servers[$type]) ? $servers[$type] : array();
+        }
+        return $servers;
+    }
+
+    /**
+     * setServers
+     *
+     * @param Array  $servers Servers array
+     * @param String $type    Servers type
+     *
+     * @return mixed
+     */
+    public function setServers($servers, $type = null)
+    {
+        if (!$this->servers) {
+            $this->servers = array();
+        }
+        if ($type && !isset($this->servers[$type])) {
+            $this->servers[$type] = array();
+        }
+
+        $this->servers[$type] = $servers;
+    }
+
     /**
      * Handle errors and warnings as Exceptions
      * http://stackoverflow.com/a/1241751

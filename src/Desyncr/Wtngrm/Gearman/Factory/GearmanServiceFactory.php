@@ -13,10 +13,8 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Factory;
 
-use Desyncr\Wtngrm\Factory as Wtngrm;
 use Desyncr\Wtngrm\Gearman\Service\GearmanService;
 use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Desyncr\Wtngrm\Gearman\Factory
@@ -27,32 +25,33 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-class GearmanServiceFactory extends Wtngrm\AbstractServiceFactory implements
+class GearmanServiceFactory extends AbstractGearmanServiceFactory implements
     FactoryInterface
 {
     /**
-     * @var string
+     * getGearmanService
+     *
+     * @param Object $gearman Gearman service instance
+     * @param Array  $options Adapter options
+     *
+     * @return mixed
      */
-    protected $configuration_key = 'gearman-adapter';
+    public function getGearmanService($gearman, $options)
+    {
+        return $this->gearmanService ?:
+            $this->gearmanService = new GearmanService($gearman, $options);
+    }
 
     /**
-     * createService
+     * getGearmanClientService
      *
-     * @param ServiceLocatorInterface $serviceLocator Service locator instance
-     *
-     * @return array|GearmanService|mixed
+     * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function getGearmanClientService()
     {
-        parent::createService($serviceLocator);
-
-        $gearman = $serviceLocator
-            ->get('Desyncr\Wtngrm\Gearman\Client\GearmanClient');
-
-        $options = isset($this->config[$this->configuration_key]) ?
-            $this->config[$this->configuration_key] : array();
-
-        return new GearmanService($gearman, $options);
-
+        return $this->gearmanClientService ?:
+            $this->gearmanClientService = $this->getServiceManager()->get(
+                'Desyncr\Wtngrm\Gearman\Client\GearmanClient'
+            );
     }
 }

@@ -13,10 +13,8 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Factory;
 
-use Desyncr\Wtngrm\Factory as Wtngrm;
 use Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService;
 use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Desyncr\Wtngrm\Gearman\Factory
@@ -27,32 +25,38 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-class GearmanWorkerServiceFactory extends Wtngrm\AbstractServiceFactory implements
+class GearmanWorkerServiceFactory extends AbstractGearmanServiceFactory implements
     FactoryInterface
 {
     /**
      * @var string
      */
-    protected $configuration_key = 'gearman-adapter';
+    protected $adapter = 'gearman';
 
     /**
-     * createService
+     * getGearmanService
      *
-     * @param ServiceLocatorInterface $serviceLocator Service locator instance
+     * @param Object $gearman Gearman service instance
+     * @param Array  $options Adapter options
      *
-     * @return array|GearmanWorkerService|mixed
+     * @return mixed
      */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function getGearmanService($gearman, $options)
     {
-        parent::createService($serviceLocator);
+        return $this->gearmanService ?:
+            $this->gearmanService = new GearmanWorkerService($gearman, $options);
+    }
 
-        $gearman = $serviceLocator
-            ->get('Desyncr\Wtngrm\Gearman\Worker\GearmanWorker');
-
-        $options = isset($this->config[$this->configuration_key]) ?
-            $this->config[$this->configuration_key] : array();
-
-        return new GearmanWorkerService($gearman, $options);
-
+    /**
+     * getGearmanClientService
+     *
+     * @return mixed
+     */
+    public function getGearmanClientService()
+    {
+        return $this->gearmanClientService ?:
+            $this->gearmanClientService = $this->getServiceManager()->get(
+                'Desyncr\Wtngrm\Gearman\Worker\GearmanWorker'
+            );
     }
 }

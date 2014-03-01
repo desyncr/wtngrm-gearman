@@ -41,15 +41,17 @@ class GearmanWorkerService extends AbstractGearmanService
     public function __construct($gearman, $options)
     {
         $this->setOptions($options);
-        $this->instance = $gearman;
+        $this->setGearmanInstance($gearman);
 
-        if (!count($this->servers['workers'])) {
+        $servers = $this->getServers('workers');
+        if (!count($servers)) {
             throw new \Exception('Define at least a worker Gearman server.');
         }
 
         set_error_handler(array($this, 'errorHandler'));
-        foreach ($this->servers['workers'] as $server) {
-            $this->instance->addServer($server['host'], $server['port']);
+        $instance = $this->getGearmanInstance();
+        foreach ($servers as $server) {
+            $instance->addServer($server['host'], $server['port']);
         }
         restore_error_handler();
     }
@@ -66,7 +68,7 @@ class GearmanWorkerService extends AbstractGearmanService
     public function add($function, $worker, $target = null)
     {
         set_error_handler(array($this, 'errorHandler'));
-        $this->instance->addFunction($function, $worker);
+        $this->getGearmanInstance()->addFunction($function, $worker);
         restore_error_handler();
     }
 
@@ -78,7 +80,7 @@ class GearmanWorkerService extends AbstractGearmanService
     public function dispatch()
     {
         set_error_handler(array($this, 'errorHandler'));
-        $res = $this->instance->work();
+        $res = $this->getGearmanInstance()->work();
         restore_error_handler();
         return $res;
     }
