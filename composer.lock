@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "53a99b176d2c014250dd2592684e811b",
+    "hash": "7de9389809d55e1798e7463b3e0b052d",
     "packages": [
         {
             "name": "desyncr/wtngrm",
-            "version": "0.1.1",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/desyncr/wtngrm.git",
-                "reference": "a954c5e81324b60a364f676eb46f01bd030760e8"
+                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/a954c5e81324b60a364f676eb46f01bd030760e8",
-                "reference": "a954c5e81324b60a364f676eb46f01bd030760e8",
+                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/aac8749d158caa1d257ac11b78b0294219f935fa",
+                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa",
                 "shasum": ""
             },
             "require": {
@@ -54,27 +54,27 @@
                 "zf2"
             ],
             "support": {
-                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.1",
+                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.3",
                 "issues": "https://github.com/desyncr/wtngrm/issues"
             },
-            "time": "2013-12-29 00:42:38"
+            "time": "2014-03-01 18:04:33"
         },
         {
             "name": "zendframework/zendframework",
-            "version": "dev-master",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "9ff45735c699dde3d5f4b719e0b01c00c855c0e9"
+                "reference": "4b3386955cc57abeb9fd7059ff281362c23cbab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/9ff45735c699dde3d5f4b719e0b01c00c855c0e9",
-                "reference": "9ff45735c699dde3d5f4b719e0b01c00c855c0e9",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/4b3386955cc57abeb9fd7059ff281362c23cbab9",
+                "reference": "4b3386955cc57abeb9fd7059ff281362c23cbab9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": ">=5.3.23"
             },
             "replace": {
                 "zendframework/zend-authentication": "self.version",
@@ -134,8 +134,11 @@
                 "fabpot/php-cs-fixer": "*@dev",
                 "ircmaxell/random-lib": "dev-master",
                 "ircmaxell/security-lib": "dev-master",
-                "ocramius/proxy-manager": "0.4.*",
-                "phpunit/phpunit": "3.7.*"
+                "mikey179/vfsstream": "1.2.*",
+                "ocramius/proxy-manager": "0.5.*",
+                "phpunit/phpunit": "3.7.*",
+                "satooshi/php-coveralls": "dev-master",
+                "sebastianbergmann/phpcov": "1.1.0"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine Annotations >=1.0 for annotation features",
@@ -172,7 +175,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2013-12-16 12:03:10"
+            "time": "2014-02-28 18:30:16"
         }
     ],
     "packages-dev": [
@@ -182,18 +185,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "10c5b2c8b72a801eaad0031cd6a6a3686909c5a9"
+                "reference": "69e55e68481cf708a6db43aff0b504e31402fe27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/10c5b2c8b72a801eaad0031cd6a6a3686909c5a9",
-                "reference": "10c5b2c8b72a801eaad0031cd6a6a3686909c5a9",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/69e55e68481cf708a6db43aff0b504e31402fe27",
+                "reference": "69e55e68481cf708a6db43aff0b504e31402fe27",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
                 "phpunit/php-file-iterator": ">=1.3.0@stable",
-                "phpunit/php-text-template": ">=1.1.1@stable",
+                "phpunit/php-text-template": ">=1.2.0@stable",
                 "phpunit/php-token-stream": ">=1.1.3@stable"
             },
             "require-dev": {
@@ -235,7 +238,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2013-11-01 09:17:11"
+            "time": "2014-02-25 03:34:05"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -288,12 +291,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-text-template.git",
-                "reference": "1eeef106193d2f8c539728e566bb4793071a9e18"
+                "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/1eeef106193d2f8c539728e566bb4793071a9e18",
-                "reference": "1eeef106193d2f8c539728e566bb4793071a9e18",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-text-template/zipball/206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
+                "reference": "206dfefc0ffe9cebf65c413e3d0e809c82fbf00a",
                 "shasum": ""
             },
             "require": {
@@ -324,7 +327,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2013-01-07 10:56:17"
+            "time": "2014-01-30 17:20:04"
         },
         {
             "name": "phpunit/php-timer",
@@ -500,12 +503,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "3e40f3b3f18c044a24688fe406440d7fd537744a"
+                "reference": "c39c4511c3b007539eb170c32cbc2af49a07351a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/3e40f3b3f18c044a24688fe406440d7fd537744a",
-                "reference": "3e40f3b3f18c044a24688fe406440d7fd537744a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/c39c4511c3b007539eb170c32cbc2af49a07351a",
+                "reference": "c39c4511c3b007539eb170c32cbc2af49a07351a",
                 "shasum": ""
             },
             "require": {
@@ -513,7 +516,6 @@
                 "phpunit/php-text-template": ">=1.1.1@stable"
             },
             "require-dev": {
-                "pear-pear/pear": "1.9.4",
                 "phpunit/phpunit": "3.7.*@dev"
             },
             "suggest": {
@@ -550,7 +552,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2013-07-23 04:42:59"
+            "time": "2014-02-16 12:43:56"
         },
         {
             "name": "symfony/yaml",
@@ -559,12 +561,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "c2e065720708d6db30dfba1278b8f53c45dd9fe0"
+                "reference": "e49a47d60348665261f6e279ba383241deb73cab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/c2e065720708d6db30dfba1278b8f53c45dd9fe0",
-                "reference": "c2e065720708d6db30dfba1278b8f53c45dd9fe0",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/e49a47d60348665261f6e279ba383241deb73cab",
+                "reference": "e49a47d60348665261f6e279ba383241deb73cab",
                 "shasum": ""
             },
             "require": {
@@ -588,7 +590,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Symfony Community",
@@ -597,7 +601,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2013-12-28 08:12:58"
+            "time": "2014-02-24 16:21:51"
         },
         {
             "name": "whatthejeff/fab",
@@ -605,12 +609,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whatthejeff/fab.git",
-                "reference": "1f9d9cdc354cabda0d7b72b7e2ab5fdfb747b8ef"
+                "reference": "871047153b3c0a1dc4ddf3b38a84c39b05ab5a6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whatthejeff/fab/zipball/1f9d9cdc354cabda0d7b72b7e2ab5fdfb747b8ef",
-                "reference": "1f9d9cdc354cabda0d7b72b7e2ab5fdfb747b8ef",
+                "url": "https://api.github.com/repos/whatthejeff/fab/zipball/871047153b3c0a1dc4ddf3b38a84c39b05ab5a6e",
+                "reference": "871047153b3c0a1dc4ddf3b38a84c39b05ab5a6e",
                 "shasum": ""
             },
             "require": {
@@ -648,7 +652,7 @@
                 "fabulous",
                 "rainbow"
             ],
-            "time": "2013-02-14 01:28:47"
+            "time": "2014-02-15 17:40:48"
         },
         {
             "name": "whatthejeff/nyancat-phpunit-resultprinter",
@@ -656,12 +660,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whatthejeff/nyancat-phpunit-resultprinter.git",
-                "reference": "ccfa266c1991bcde1cf590b3de808b3465ca9b1d"
+                "reference": "8817a302692e64639c43c7759540edbcd7b252f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whatthejeff/nyancat-phpunit-resultprinter/zipball/ccfa266c1991bcde1cf590b3de808b3465ca9b1d",
-                "reference": "ccfa266c1991bcde1cf590b3de808b3465ca9b1d",
+                "url": "https://api.github.com/repos/whatthejeff/nyancat-phpunit-resultprinter/zipball/8817a302692e64639c43c7759540edbcd7b252f9",
+                "reference": "8817a302692e64639c43c7759540edbcd7b252f9",
                 "shasum": ""
             },
             "require": {
@@ -670,15 +674,9 @@
             },
             "require-dev": {
                 "pear-pear/pear": "1.9.4",
-                "phpunit/php-code-coverage": "1.3.*@dev",
-                "phpunit/php-file-iterator": ">=1.3.1@dev",
-                "phpunit/php-text-template": ">=1.1.1@dev",
-                "phpunit/php-timer": ">=1.1.0@dev",
-                "phpunit/phpunit": "3.8.*@dev",
-                "phpunit/phpunit-mock-objects": "1.3.*@dev",
-                "sebastian/diff": ">=1.0.0@dev",
-                "sebastian/exporter": ">=1.0.0@dev",
-                "sebastian/version": ">=1.0.0@dev"
+                "phpunit/php-code-coverage": "2.0.*@dev",
+                "phpunit/phpunit": "4.0.*@dev",
+                "phpunit/phpunit-mock-objects": "2.0.*@dev"
             },
             "type": "library",
             "extra": {
@@ -710,7 +708,7 @@
                 "rainbow",
                 "tests"
             ],
-            "time": "2013-10-30 06:26:11"
+            "time": "2014-02-15 17:31:57"
         },
         {
             "name": "whatthejeff/nyancat-scoreboard",
@@ -718,12 +716,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whatthejeff/nyancat-scoreboard.git",
-                "reference": "acbda7e68accd876f99fef1ee77bcf8ee948ee2a"
+                "reference": "5d61e23377f40b9bb0e0e2116fb061801b8c3692"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whatthejeff/nyancat-scoreboard/zipball/acbda7e68accd876f99fef1ee77bcf8ee948ee2a",
-                "reference": "acbda7e68accd876f99fef1ee77bcf8ee948ee2a",
+                "url": "https://api.github.com/repos/whatthejeff/nyancat-scoreboard/zipball/5d61e23377f40b9bb0e0e2116fb061801b8c3692",
+                "reference": "5d61e23377f40b9bb0e0e2116fb061801b8c3692",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +730,9 @@
             },
             "require-dev": {
                 "pear-pear/pear": "1.9.4",
-                "phpunit/phpunit": "~3.7"
+                "phpunit/php-code-coverage": "2.0.*@dev",
+                "phpunit/phpunit": "4.0.*@dev",
+                "phpunit/phpunit-mock-objects": "2.0.*@dev"
             },
             "type": "library",
             "extra": {
@@ -764,7 +764,7 @@
                 "scoreboard",
                 "tests"
             ],
-            "time": "2013-11-14 02:29:00"
+            "time": "2014-02-15 17:48:20"
         }
     ],
     "aliases": [
