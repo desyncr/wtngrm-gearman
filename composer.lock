@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7de9389809d55e1798e7463b3e0b052d",
+    "hash": "c3ad3af0f565a92986a0942e2e1ffe8a",
     "packages": [
         {
             "name": "desyncr/wtngrm",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/desyncr/wtngrm.git",
-                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa"
+                "reference": "e2a325c317f8366ea5c62a62f9cafffe00abdacd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/aac8749d158caa1d257ac11b78b0294219f935fa",
-                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa",
+                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/e2a325c317f8366ea5c62a62f9cafffe00abdacd",
+                "reference": "e2a325c317f8366ea5c62a62f9cafffe00abdacd",
                 "shasum": ""
             },
             "require": {
@@ -54,10 +54,10 @@
                 "zf2"
             ],
             "support": {
-                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.3",
+                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.4",
                 "issues": "https://github.com/desyncr/wtngrm/issues"
             },
-            "time": "2014-03-01 18:04:33"
+            "time": "2014-03-01 19:38:21"
         },
         {
             "name": "zendframework/zendframework",

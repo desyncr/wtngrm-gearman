@@ -32,6 +32,11 @@ abstract class AbstractGearmanService extends AbstractService
     protected $instance = null;
 
     /**
+     * @var array
+     */
+    public $servers = null;
+
+    /**
      * setGearmanInstance
      *
      * @param Object $instance Gearman instance
