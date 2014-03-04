@@ -9,4 +9,4 @@ if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 /** @var $loader \Composer\Autoload\ClassLoader */
-$loader->add('WtngrmGearmanTest\\', __DIR__);
+$loader->add('Desyncr\\Wtngrm\\GearmanTest\\', __DIR__);

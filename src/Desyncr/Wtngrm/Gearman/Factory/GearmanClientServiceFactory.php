@@ -1,6 +1,6 @@
 <?php
 /**
- * Desyncr\Wtngrm\Gearman\Factory
+ * General
  *
  * PHP version 5.4
  *
@@ -13,8 +13,7 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Factory;
 
-use Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService;
-use Desyncr\Wtngrm\Factory\ServiceFactory;
+use Desyncr\Wtngrm\Gearman\Service\GearmanClientService;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\AbstractOptions;
 
@@ -27,22 +26,8 @@ use Zend\Stdlib\AbstractOptions;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-abstract class AbstractGearmanServiceFactory extends ServiceFactory
+class GearmanClientServiceFactory extends AbstractGearmanServiceFactory
 {
-    /**
-     * createService
-     *
-     * @param ServiceLocatorInterface $serviceLocator Service locator instance
-     *
-     * @return array|GearmanWorkerService|mixed
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
-    {
-        $gearman = $this->getGearmanClient($serviceLocator);
-        $options = $this->getGearmanOptions($serviceLocator);
-        return $this->getGearmanService($gearman, $options);
-    }
-
     /**
      * getGearmanService
      *
@@ -51,7 +36,24 @@ abstract class AbstractGearmanServiceFactory extends ServiceFactory
      *
      * @return mixed
      */
-    abstract public function getGearmanService($gearman, AbstractOptions $options);
+    public function getGearmanService($gearman, AbstractOptions $options)
+    {
+        return new GearmanClientService($gearman, $options);
+    }
+
+    /**
+     * getGearmanClientService
+     *
+     * @param ServiceLocatorInterface $sm Service Locator
+     *
+     * @return mixed
+     */
+    public function getGearmanClient(ServiceLocatorInterface $sm)
+    {
+        return $sm->get(
+            'Desyncr\Wtngrm\Gearman\Client\GearmanClient'
+        );
+    }
 
     /**
      * getGearmanOptions
@@ -60,14 +62,10 @@ abstract class AbstractGearmanServiceFactory extends ServiceFactory
      *
      * @return mixed
      */
-    abstract public function getGearmanOptions(ServiceLocatorInterface $sm);
-
-    /**
-     * getGearmanClient
-     *
-     * @param ServiceLocatorInterface $sm Service Locator
-     *
-     * @return mixed
-     */
-    abstract public function getGearmanClient(ServiceLocatorInterface $sm);
+    public function getGearmanOptions(ServiceLocatorInterface $sm)
+    {
+        return $sm->get(
+            'Desyncr\Wtngrm\Gearman\Options\GearmanClientOptions'
+        );
+    }
 }

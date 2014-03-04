@@ -1,5 +1,17 @@
 <?php
-namespace WtngrmGearmanTest;
+/**
+ * Desyncr\Wtngrm\GearmanTest
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  Desyncr\Wtngrm\GearmanTest
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
+namespace Desyncr\Wtngrm\GearmanTest;
 
 use PHPUnit_Framework_TestCase;
 use Desyncr\Wtngrm\Module;
@@ -9,6 +21,11 @@ use Desyncr\Wtngrm\Module;
  */
 class ModuleTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * testGetAutoloaderConfig
+     *
+     * @return  null
+     */
     public function testGetAutoloaderConfig()
     {
         $module = new Module();
@@ -16,6 +33,11 @@ class ModuleTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('array', $module->getAutoloaderConfig());
     }
 
+    /**
+     * testGetConfig
+     *
+     * @return mixed
+     */
     public function testGetConfig()
     {
         $module = new Module();

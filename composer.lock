@@ -3,20 +3,20 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7de9389809d55e1798e7463b3e0b052d",
+    "hash": "71635b7eb4daafe0115ba5af4e1ddef1",
     "packages": [
         {
             "name": "desyncr/wtngrm",
-            "version": "0.1.3",
+            "version": "dev-development",
             "source": {
                 "type": "git",
                 "url": "https://github.com/desyncr/wtngrm.git",
-                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa"
+                "reference": "a1682606dfa98a3fb7bd289a019415880aed5c3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/aac8749d158caa1d257ac11b78b0294219f935fa",
-                "reference": "aac8749d158caa1d257ac11b78b0294219f935fa",
+                "url": "https://api.github.com/repos/desyncr/wtngrm/zipball/a1682606dfa98a3fb7bd289a019415880aed5c3f",
+                "reference": "a1682606dfa98a3fb7bd289a019415880aed5c3f",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
                 "zendframework/zendframework": "2.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "phpunit/phpunit": "3.7.*"
             },
             "type": "module",
             "autoload": {
@@ -43,7 +43,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Zend2 Module for Qeueuing/Background jobs servers",
+            "description": "Zend2 Module for Queueing/Background jobs servers",
             "homepage": "http://github.com/desyncr/wtngrm",
             "keywords": [
                 "beanstalk",
@@ -54,10 +54,10 @@
                 "zf2"
             ],
             "support": {
-                "source": "https://github.com/desyncr/wtngrm/tree/v0.1.3",
+                "source": "https://github.com/desyncr/wtngrm/tree/development",
                 "issues": "https://github.com/desyncr/wtngrm/issues"
             },
-            "time": "2014-03-01 18:04:33"
+            "time": "2014-03-04 21:31:48"
         },
         {
             "name": "zendframework/zendframework",
@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "4b3386955cc57abeb9fd7059ff281362c23cbab9"
+                "reference": "148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/4b3386955cc57abeb9fd7059ff281362c23cbab9",
-                "reference": "4b3386955cc57abeb9fd7059ff281362c23cbab9",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd",
+                "reference": "148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,6 @@
                 "ircmaxell/random-lib": "dev-master",
                 "ircmaxell/security-lib": "dev-master",
                 "mikey179/vfsstream": "1.2.*",
-                "ocramius/proxy-manager": "0.5.*",
                 "phpunit/phpunit": "3.7.*",
                 "satooshi/php-coveralls": "dev-master",
                 "sebastianbergmann/phpcov": "1.1.0"
@@ -144,7 +143,7 @@
                 "doctrine/annotations": "Doctrine Annotations >=1.0 for annotation features",
                 "ext-intl": "ext/intl for i18n features (included in default builds of PHP)",
                 "ircmaxell/random-lib": "Fallback random byte generator for Zend\\Math\\Rand if OpenSSL/Mcrypt extensions are unavailable",
-                "ocramius/proxy-manager": "ProxyManager to handle lazy initialization of services",
+                "ocramius/proxy-manager": "ProxyManager 0.5.* to handle lazy initialization of services",
                 "zendframework/zendpdf": "ZendPdf for creating PDF representations of barcodes",
                 "zendframework/zendservice-recaptcha": "ZendService\\ReCaptcha for rendering ReCaptchas in Zend\\Captcha and/or Zend\\Form"
             },
@@ -175,7 +174,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2014-02-28 18:30:16"
+            "time": "2014-03-04 18:04:09"
         }
     ],
     "packages-dev": [
@@ -379,12 +378,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "292f4d5772dad5a12775be69f4a8dd663b20f103"
+                "reference": "ad4e1e23ae01b483c16f600ff1bebec184588e32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/292f4d5772dad5a12775be69f4a8dd663b20f103",
-                "reference": "292f4d5772dad5a12775be69f4a8dd663b20f103",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/ad4e1e23ae01b483c16f600ff1bebec184588e32",
+                "reference": "ad4e1e23ae01b483c16f600ff1bebec184588e32",
                 "shasum": ""
             },
             "require": {
@@ -421,7 +420,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2013-10-21 14:03:39"
+            "time": "2014-03-03 05:10:30"
         },
         {
             "name": "phpunit/phpunit",
@@ -772,6 +771,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "desyncr/wtngrm": 20,
         "whatthejeff/nyancat-phpunit-resultprinter": 20
     },
     "platform": {
