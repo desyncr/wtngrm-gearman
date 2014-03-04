@@ -1,17 +1,19 @@
 <?php
 /**
- * General
+ * Desyncr\Wtngrm\Gearman\Service
  *
  * PHP version 5.4
  *
  * @category General
- * @package  General
+ * @package  Desyncr\Wtngrm\Gearman\Service
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>
  * @link     https://github.com/desyncr
  */
 namespace Desyncr\Wtngrm\Gearman\Service;
+
+use Desyncr\Wtngrm\Gearman\Options\GearmanWorkerOptions;
 
 /**
  * Desyncr\Wtngrm\Gearman\Service
@@ -25,25 +27,20 @@ namespace Desyncr\Wtngrm\Gearman\Service;
 class GearmanWorkerService extends AbstractGearmanService
 {
     /**
-     * @var null
-     */
-    protected $instance = null;
-
-    /**
      * Returns a new instance of GearmanWorkerService
      *
-     * @param Object $gearman Gearman instance
-     * @param Array  $options Options array
+     * @param Object               $gearman Gearman instance
+     * @param GearmanWorkerOptions $options Options array
      *
      * @throws \Exception
      * @return GearmanWorkerService
      */
-    public function __construct($gearman, $options)
+    public function __construct($gearman, GearmanWorkerOptions $options)
     {
         $this->setOptions($options);
         $this->setGearmanInstance($gearman);
 
-        $servers = $this->getServers('workers');
+        $servers = $options->getServers('workers');
         if (!count($servers)) {
             throw new \Exception('Define at least a worker Gearman server.');
         }
@@ -63,7 +60,7 @@ class GearmanWorkerService extends AbstractGearmanService
      * @param Mixed  $worker   A gearman worker
      * @param null   $target   Unused
      *
-     * @return \Desyncr\Wtngrm\Job\BaseJob|void
+     * @return null
      */
     public function add($function, $worker, $target = null)
     {

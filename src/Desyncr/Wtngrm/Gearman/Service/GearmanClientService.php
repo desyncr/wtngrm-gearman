@@ -13,6 +13,8 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Service;
 
+use Desyncr\Wtngrm\Gearman\Options\GearmanClientOptions;
+use Desyncr\Wtngrm\Job\JobBase;
 use Desyncr\Wtngrm\Job\JobInterface;
 
 /**
@@ -24,22 +26,27 @@ use Desyncr\Wtngrm\Job\JobInterface;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-class GearmanService extends AbstractGearmanService
+class GearmanClientService extends AbstractGearmanService
 {
+    /**
+     * @var array JobInterface
+     */
+    protected $jobs = array();
+
     /**
      * Returns a GearmanService instance
      *
-     * @param Object $gearman Gearman Service instance
-     * @param Array  $options Options array
+     * @param Object               $gearman Gearman Service instance
+     * @param GearmanClientOptions $options Options array
      *
      * @throws \Exception
      */
-    public function __construct($gearman, $options)
+    public function __construct($gearman, GearmanClientOptions $options)
     {
         $this->setOptions($options);
         $this->setGearmanInstance($gearman);
 
-        $servers = $this->getServers('client');
+        $servers = $options->getServers('client');
         if (!count($servers)) {
             throw new \Exception('Define at least a client Gearman server.');
         }
@@ -54,6 +61,42 @@ class GearmanService extends AbstractGearmanService
             $servers
         );
         restore_error_handler();
+    }
+
+    /**
+     * addJob
+     *
+     * @param JobInterface $job Job
+     *
+     * @return mixed
+     */
+    public function addJob(JobInterface $job)
+    {
+        array_push($this->jobs, $job);
+    }
+
+    /**
+     * Add a job to be processed.
+     *
+     * To be deprecated. Use addJob.
+     */
+    public function add($key, $job)
+    {
+        if (!is_object($job)) {
+            $job = new JobBase();
+            $job->setId($key);
+        }
+        return $this->addJob($job);
+    }
+
+    /**
+     * getJobs
+     *
+     * @return array
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
     }
 
     /**

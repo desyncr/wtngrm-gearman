@@ -1,11 +1,11 @@
 <?php
 /**
- * General
+ * Desyncr\Wtngrm\Gearman\Controller
  *
  * PHP version 5.4
  *
  * @category General
- * @package  General
+ * @package  Desyncr\Wtngrm\Gearman\Controller
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>
@@ -13,10 +13,12 @@
  */
 namespace Desyncr\Wtngrm\Gearman\Controller;
 
+use Desyncr\Wtngrm\Gearman\Worker\GearmanWorker;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Console\Request as ConsoleRequest;
 use Desyncr\Wtngrm\Worker\WorkerInterface;
-use Desyncr\Wtngrm\Service\ServiceInterface;
+use Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService;
+use Desyncr\Wtngrm\Gearman\Options\GearmanWorkerOptions;
 
 /**
  * Desyncr\Wtngrm\Gearman\Controller
@@ -30,7 +32,7 @@ use Desyncr\Wtngrm\Service\ServiceInterface;
 class WorkerController extends AbstractActionController
 {
     /**
-     * @var Object GearmanService instance
+     * @var GearmanWorkerService GearmanService instance
      */
     protected $gearmanService = null;
 
@@ -56,12 +58,12 @@ class WorkerController extends AbstractActionController
     /**
      * _dispatchWorker
      *
-     * @param String                                 $workerName Worker ID
-     * @param \Desyncr\Wtngrm\Worker\WorkerInterface $worker     Worker instance
+     * @param String        $workerName Worker ID
+     * @param GearmanWorker $worker     Worker instance
      *
      * @return null
      */
-    private function _dispatchWorker($workerName, WorkerInterface $worker)
+    private function _dispatchWorker($workerName, GearmanWorker $worker)
     {
         $serviceLocator = $this->getServiceLocator();
         $gearmanService = $this->getGearmanService();
@@ -70,7 +72,7 @@ class WorkerController extends AbstractActionController
             $workerName,
             function ($job) use ($worker, $serviceLocator) {
                 $worker->setUp($serviceLocator, $job);
-                $worker->execute($job, $serviceLocator);
+                $worker->execute($job);
                 $worker->tearDown();
             }
         );
@@ -89,7 +91,9 @@ class WorkerController extends AbstractActionController
      */
     private function _getWorker($workerName)
     {
-        $workers = $this->getGearmanService()->getOption('workers');
+        /** @var GearmanWorkerOptions $options */
+        $options = $this->getGearmanService()->getOptions();
+        $workers = $options->getServers('workers');
         if (!in_array($workerName, array_keys($workers))) {
             throw new \Exception('Worker ID not found or not defined!');
         }
@@ -107,11 +111,11 @@ class WorkerController extends AbstractActionController
     /**
      * setGearmanService
      *
-     * @param ServiceInterface $gearmanService Gearman service instance
+     * @param GearmanWorkerService $gearmanService Gearman service instance
      *
      * @return mixed
      */
-    public function setGearmanService(ServiceInterface $gearmanService)
+    public function setGearmanService(GearmanWorkerService $gearmanService)
     {
         $this->gearmanService = $gearmanService;
     }
@@ -119,7 +123,7 @@ class WorkerController extends AbstractActionController
     /**
      * getGearmanService
      *
-     * @return ServiceInterface
+     * @return GearmanWorkerService
      */
     public function getGearmanService()
     {
