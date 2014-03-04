@@ -12,7 +12,7 @@
         syntaxCheck="true"
         >
     <testsuite name="WtngrmGearman tests">
-        <directory>./tests/WtngrmGearmanTest</directory>
+        <directory>./tests/Desyncr/Wtngrm/GearmanTest</directory>
     </testsuite>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">

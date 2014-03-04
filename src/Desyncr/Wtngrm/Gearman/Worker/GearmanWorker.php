@@ -1,11 +1,11 @@
 <?php
 /**
- * General
+ * Desyncr\Wtngrm\Gearman\Worker
  *
  * PHP version 5.4
  *
  * @category General
- * @package  General
+ * @package  Desyncr\Wtngrm\Gearman\Worker
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>
@@ -36,7 +36,7 @@ abstract class GearmanWorker extends AbstractWorker
      * setUp
      *
      * @param ServiceLocatorInterface $sm  Service locator instance
-     * @param Object                  $job Gearman job
+     * @param \GearmanJob             $job Gearman job
      *
      * @return null
      */
@@ -44,9 +44,9 @@ abstract class GearmanWorker extends AbstractWorker
     {
         parent::setUp($sm, $job);
 
-        /* HACK for gearmand version ~0.2 */
-        $job = $this->getJob();
+        /** @var \GearmanJob $job */
         if (is_object($job)) {
+            // HACK for gearmand version ~0.2
             $workload = json_decode($job->workload(), true);
         } else {
             $workload = $job;
