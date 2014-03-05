@@ -14,6 +14,7 @@
 namespace Desyncr\Wtngrm\Gearman\Factory;
 
 use Desyncr\Wtngrm\Gearman\Options\GearmanClientOptions;
+use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
@@ -25,7 +26,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @link     https://github.com/desyncr
  */
-class GearmanClientOptionsFactory
+class GearmanClientOptionsFactory implements FactoryInterface
 {
     /**
      * createService
@@ -34,7 +35,7 @@ class GearmanClientOptionsFactory
      *
      * @return GearmanClientOptions
      */
-    public function createService(ServiceLocatorInterface$serviceLocator)
+    public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config = $serviceLocator->get('Config');
         return new GearmanClientOptions($config['wtngrm']['gearman-adapter']);

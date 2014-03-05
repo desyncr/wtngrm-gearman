@@ -20,8 +20,8 @@ return array(
      */
     'service_manager' => array(
         'factories' => array(
-            'Desyncr\Wtngrm\Gearman\Service\GearmanService'
-            => 'Desyncr\Wtngrm\Gearman\Factory\GearmanServiceFactory',
+            'Desyncr\Wtngrm\Gearman\Service\GearmanClientService'
+            => 'Desyncr\Wtngrm\Gearman\Factory\GearmanClientServiceFactory',
 
             'Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService'
             => 'Desyncr\Wtngrm\Gearman\Factory\GearmanWorkerServiceFactory',
