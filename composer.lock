@@ -3,11 +3,11 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f6a7bd39736c67927078d512790563e4",
+    "hash": "098151c369b2f94f604d5fd8187932c1",
     "packages": [
         {
             "name": "desyncr/wtngrm",
-            "version": "dev-development",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/desyncr/wtngrm.git",
@@ -65,12 +65,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd"
+                "reference": "503bf812dcaf2d81b6ae9e979a82770d32cc296c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd",
-                "reference": "148dd5a1a5b6e4e177d0da3fc1199c2ce40d2ddd",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/503bf812dcaf2d81b6ae9e979a82770d32cc296c",
+                "reference": "503bf812dcaf2d81b6ae9e979a82770d32cc296c",
                 "shasum": ""
             },
             "require": {
@@ -174,7 +174,7 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2014-03-04 18:04:09"
+            "time": "2014-03-05 17:45:24"
         }
     ],
     "packages-dev": [
@@ -560,12 +560,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "e49a47d60348665261f6e279ba383241deb73cab"
+                "reference": "6194137af5f12fbcfc0cb21e269f47542b8beb47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/e49a47d60348665261f6e279ba383241deb73cab",
-                "reference": "e49a47d60348665261f6e279ba383241deb73cab",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/6194137af5f12fbcfc0cb21e269f47542b8beb47",
+                "reference": "6194137af5f12fbcfc0cb21e269f47542b8beb47",
                 "shasum": ""
             },
             "require": {
@@ -600,7 +600,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2014-02-24 16:21:51"
+            "time": "2014-03-03 12:53:01"
         },
         {
             "name": "whatthejeff/fab",
@@ -771,7 +771,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "desyncr/wtngrm": 20,
         "whatthejeff/nyancat-phpunit-resultprinter": 20
     },
     "platform": {
