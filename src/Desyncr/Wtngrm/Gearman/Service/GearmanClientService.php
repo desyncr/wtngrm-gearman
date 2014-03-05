@@ -70,7 +70,7 @@ class GearmanClientService extends AbstractGearmanService
      *
      * @return mixed
      */
-    public function addJob(JobInterface $job)
+    public function addJob($job)
     {
         array_push($this->jobs, $job);
     }
@@ -86,6 +86,7 @@ class GearmanClientService extends AbstractGearmanService
             $job = new JobBase();
             $job->setId($key);
         }
+        /** @var JobInterface $job */
         return $this->addJob($job);
     }
 
@@ -110,8 +111,12 @@ class GearmanClientService extends AbstractGearmanService
         $instance = $this->getGearmanInstance();
 
         array_map(
-            function (JobInterface $job) use ($instance) {
-                $instance->doBackground($job->getId(), $job->serialize());
+            function ($job) use ($instance) {
+                /** @var JobInterface $job */
+                $instance->doBackground(
+                    $job->getId(),
+                    json_encode($job->serialize())
+                );
             },
             $this->getJobs()
         );
