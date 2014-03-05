@@ -1,11 +1,11 @@
 <?php
 /**
- * General
+ * Desyncr\Wtngrm\Gearman\Factory
  *
  * PHP version 5.4
  *
  * @category General
- * @package  General
+ * @package  Desyncr\Wtngrm\Gearman\Factory
  * @author   Dario Cavuotti <dc@syncr.com.ar>
  * @license  https://www.gnu.org/licenses/gpl.html GPL-3.0+
  * @version  GIT:<>

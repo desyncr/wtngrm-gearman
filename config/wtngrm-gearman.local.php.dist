@@ -1,36 +1,33 @@
 <?php
+/**
+ * Wtngrm-gearman configuration
+ *
+ * PHP version 5.4
+ *
+ * @category General
+ * @package  Desyncr\Wtngrm\Gearman
+ * @author   Dario Cavuotti <dc@syncr.com.ar>
+ * @license  http://gpl.gnu.org GPL-3.0+
+ * @version  GIT:<>
+ * @link     https://github.com/desyncr
+ */
+
 return array(
-    'service_manager' => array(
-        'factories' => array(
-            'Desyncr\Wtngrm\Gearman\Service\GearmanService'  => 'Desyncr\Wtngrm\Gearman\Factory\GearmanServiceFactory',
-            'Desyncr\Wtngrm\Gearman\Service\GearmanWorkerService'  => 'Desyncr\Wtngrm\Gearman\Factory\GearmanWorkerServiceFactory',
-            'Desyncr\Wtngrm\Gearman\Client\GearmanClient' => function($sm) {
-                return new \GearmanClient();
-            },
-            'Desyncr\Wtngrm\Gearman\Worker\GearmanWorker' => function($sm) {
-                return new \GearmanWorker();
-            }
-        ),
-    ),
     'wtngrm' => array(
         'gearman-adapter' => array(
             'servers' => array(
                 'client' => array(
                     array(
-                        'host' =>  '127.0.0.1',
+                        'host' => '127.0.0.1',
                         'port' => 4730
                     )
                 ),
-                'workers' => array(
+                'worker' => array(
                     array(
                         'host' =>  '127.0.0.1',
                         'port' => 4730
                     )
                 )
-            ),
-
-            'workers' => array(
-                'email.notification' => '\Core\Worker\MailNotificationWorker'
             )
         )
     )

@@ -92,8 +92,8 @@ class WorkerController extends AbstractActionController
     private function _getWorker($workerName)
     {
         /** @var GearmanWorkerOptions $options */
-        $options = $this->getGearmanService()->getOptions();
-        $workers = $options->getServers('workers');
+        $options = $this->getServiceLocator()->get('Config');
+        $workers = $options['gearman']['workers'];
         if (!in_array($workerName, array_keys($workers))) {
             throw new \Exception('Worker ID not found or not defined!');
         }
