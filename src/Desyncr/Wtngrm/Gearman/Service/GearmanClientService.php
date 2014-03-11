@@ -120,6 +120,7 @@ class GearmanClientService extends AbstractGearmanService
             },
             $this->getJobs()
         );
+        $this->jobs = array();
         restore_error_handler();
     }
 }
