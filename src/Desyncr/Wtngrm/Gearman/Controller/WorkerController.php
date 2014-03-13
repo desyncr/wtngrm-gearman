@@ -71,8 +71,9 @@ class WorkerController extends AbstractActionController
         $gearmanService->add(
             $workerName,
             function ($job) use ($worker, $serviceLocator) {
-                $worker->setUp($serviceLocator, $job);
-                $worker->execute($job);
+                if ($worker->setUp($serviceLocator, $job) !== false) {
+                    $worker->execute($job);
+                }
                 $worker->tearDown();
             }
         );
