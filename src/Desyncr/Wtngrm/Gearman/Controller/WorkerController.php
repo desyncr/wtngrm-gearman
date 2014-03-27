@@ -106,7 +106,7 @@ class WorkerController extends AbstractActionController
             );
         }
 
-        return new $workers[$workerName];
+        return $this->getServiceLocator()->get($workers[$workerName]);
     }
 
     /**

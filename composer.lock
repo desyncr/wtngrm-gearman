@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "098151c369b2f94f604d5fd8187932c1",
+    "hash": "dedb739f4da71f16100188c7ffc26977",
     "packages": [
         {
             "name": "desyncr/wtngrm",
@@ -65,16 +65,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zf2.git",
-                "reference": "503bf812dcaf2d81b6ae9e979a82770d32cc296c"
+                "reference": "deeb778346fb5c9404e869ac1318257518c4bf97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zf2/zipball/503bf812dcaf2d81b6ae9e979a82770d32cc296c",
-                "reference": "503bf812dcaf2d81b6ae9e979a82770d32cc296c",
+                "url": "https://api.github.com/repos/zendframework/zf2/zipball/deeb778346fb5c9404e869ac1318257518c4bf97",
+                "reference": "deeb778346fb5c9404e869ac1318257518c4bf97",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.23"
+                "php": ">=5.3.23",
+                "zendframework/zendxml": "~1.0-dev"
             },
             "replace": {
                 "zendframework/zend-authentication": "self.version",
@@ -155,8 +156,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev",
-                    "dev-develop": "2.3-dev"
+                    "dev-master": "2.3-dev",
+                    "dev-develop": "2.4-dev"
                 }
             },
             "autoload": {
@@ -174,7 +175,52 @@
                 "framework",
                 "zf2"
             ],
-            "time": "2014-03-05 17:45:24"
+            "time": "2014-03-27 09:15:51"
+        },
+        {
+            "name": "zendframework/zendxml",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/ZendXml.git",
+                "reference": "559b34f426d33a11c3db118e00ce14bb8dc64e5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/ZendXml/zipball/559b34f426d33a11c3db118e00ce14bb8dc64e5f",
+                "reference": "559b34f426d33a11c3db118e00ce14bb8dc64e5f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "*@dev",
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ZendXml": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Utility library for XML usage, best practices, and security in PHP",
+            "homepage": "http://packages.zendframework.com/",
+            "keywords": [
+                "security",
+                "xml",
+                "zf2"
+            ],
+            "time": "2014-03-05 22:25:44"
         }
     ],
     "packages-dev": [
@@ -659,12 +705,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whatthejeff/nyancat-phpunit-resultprinter.git",
-                "reference": "8817a302692e64639c43c7759540edbcd7b252f9"
+                "reference": "95f0def8affdc07ae4f6fbc6d45305180e486f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whatthejeff/nyancat-phpunit-resultprinter/zipball/8817a302692e64639c43c7759540edbcd7b252f9",
-                "reference": "8817a302692e64639c43c7759540edbcd7b252f9",
+                "url": "https://api.github.com/repos/whatthejeff/nyancat-phpunit-resultprinter/zipball/95f0def8affdc07ae4f6fbc6d45305180e486f29",
+                "reference": "95f0def8affdc07ae4f6fbc6d45305180e486f29",
                 "shasum": ""
             },
             "require": {
@@ -672,10 +718,7 @@
                 "whatthejeff/nyancat-scoreboard": "~1.1"
             },
             "require-dev": {
-                "pear-pear/pear": "1.9.4",
-                "phpunit/php-code-coverage": "2.0.*@dev",
-                "phpunit/phpunit": "4.0.*@dev",
-                "phpunit/phpunit-mock-objects": "2.0.*@dev"
+                "phpunit/phpunit": "4.0.*"
             },
             "type": "library",
             "extra": {
@@ -707,7 +750,7 @@
                 "rainbow",
                 "tests"
             ],
-            "time": "2014-02-15 17:31:57"
+            "time": "2014-03-08 10:15:56"
         },
         {
             "name": "whatthejeff/nyancat-scoreboard",
@@ -715,12 +758,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whatthejeff/nyancat-scoreboard.git",
-                "reference": "5d61e23377f40b9bb0e0e2116fb061801b8c3692"
+                "reference": "fa0a82e84c6b2e87b8e695b760956647f90c65f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whatthejeff/nyancat-scoreboard/zipball/5d61e23377f40b9bb0e0e2116fb061801b8c3692",
-                "reference": "5d61e23377f40b9bb0e0e2116fb061801b8c3692",
+                "url": "https://api.github.com/repos/whatthejeff/nyancat-scoreboard/zipball/fa0a82e84c6b2e87b8e695b760956647f90c65f8",
+                "reference": "fa0a82e84c6b2e87b8e695b760956647f90c65f8",
                 "shasum": ""
             },
             "require": {
@@ -728,10 +771,7 @@
                 "whatthejeff/fab": "~1.0"
             },
             "require-dev": {
-                "pear-pear/pear": "1.9.4",
-                "phpunit/php-code-coverage": "2.0.*@dev",
-                "phpunit/phpunit": "4.0.*@dev",
-                "phpunit/phpunit-mock-objects": "2.0.*@dev"
+                "phpunit/phpunit": "4.0.*"
             },
             "type": "library",
             "extra": {
@@ -763,7 +803,7 @@
                 "scoreboard",
                 "tests"
             ],
-            "time": "2014-02-15 17:48:20"
+            "time": "2014-03-08 11:04:43"
         }
     ],
     "aliases": [
