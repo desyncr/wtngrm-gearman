@@ -1,6 +1,6 @@
 {
     "name": "desyncr/wtngrm-gearman",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "description": "Zend2 Module for Queueing/Background jobs servers - Gearman adapter",
     "type": "module",
     "license": "GPL-3.0+",

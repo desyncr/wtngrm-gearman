@@ -45,11 +45,17 @@ abstract class GearmanWorker extends AbstractWorker
         parent::setUp($sm, $job);
 
         /** @var \GearmanJob $job */
-        if (is_object($job)) {
+        if (is_object($job) && method_exists($job, 'workload')) {
             // HACK for gearmand version ~0.2
             $workload = json_decode($job->workload(), true);
-        } else {
+        } else if (is_object($job) && method_exists($job, 'getUnique')) {
+            $workload = array('unique' => $job->getUnique($job));
+        } else if (is_array($job)) {
             $workload = $job;
+        } else if (is_string($job)) {
+            $workload = json_decode($job, true);
+        } else {
+            $workload = array('unique' => $job);
         }
 
         $this->setWorkload($workload);
@@ -62,7 +68,7 @@ abstract class GearmanWorker extends AbstractWorker
      *
      * @return null
      */
-    public function setWorkload(Array $workload)
+    public function setWorkload($workload)
     {
         $this->workload = $workload;
     }
