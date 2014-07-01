@@ -34,12 +34,12 @@ return array(
 
             'Desyncr\Wtngrm\Gearman\Client\GearmanClient'
             => function (ServiceLocatorInterface $sm) {
-                return new \GearmanClient();
-            },
+                    return new \GearmanClient();
+                },
             'Desyncr\Wtngrm\Gearman\Worker\GearmanWorker'
             => function (ServiceLocatorInterface $sm) {
-                return new \GearmanWorker();
-            },
+                    return new \GearmanWorker();
+                },
         ),
     ),
 

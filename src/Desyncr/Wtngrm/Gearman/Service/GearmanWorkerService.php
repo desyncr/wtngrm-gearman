@@ -27,6 +27,11 @@ use Desyncr\Wtngrm\Gearman\Options\GearmanWorkerOptions;
 class GearmanWorkerService extends AbstractGearmanService
 {
     /**
+     * @var bool
+     */
+    private $stop = false;
+
+    /**
      * Returns a new instance of GearmanWorkerService
      *
      * @param Object               $gearman Gearman instance
@@ -77,8 +82,18 @@ class GearmanWorkerService extends AbstractGearmanService
     public function dispatch()
     {
         set_error_handler(array($this, 'errorHandler'));
-        $res = $this->getGearmanInstance()->work();
+        $res = !$this->stop && $this->getGearmanInstance()->work();
         restore_error_handler();
         return $res;
+    }
+
+    /**
+     * Stops the service from futher dispatching jobs
+     *
+     * @return null
+     */
+    public function stop()
+    {
+        $this->stop = true;
     }
 }

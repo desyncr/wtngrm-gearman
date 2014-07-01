@@ -67,19 +67,28 @@ class WorkerController extends AbstractActionController
     {
         $serviceLocator = $this->getServiceLocator();
         $gearmanService = $this->getGearmanService();
+        $workerDispatcherHandler = $this->getDispatcherHandler();
 
         $gearmanService->add(
             $workerName,
-            function ($job) use ($worker, $serviceLocator) {
-                if ($worker->setUp($serviceLocator, $job) !== false) {
-                    $worker->execute($job);
-                }
-                $worker->tearDown();
+            function ($job) use ($worker, $serviceLocator, $gearmanService, $workerDispatcherHandler) {
+                call_user_func($workerDispatcherHandler, $job, $worker, $gearmanService, $serviceLocator);
             }
         );
 
         while ($gearmanService->dispatch()) {
         }
+    }
+
+    /**
+     * getDispatcherHandler
+     *
+     * @return \Desyncr\Wtgnrm\Gearman\Worker\WorkerDispatcherHandler
+     */
+    public function getDispatcherHandler()
+    {
+        $config = $this->getServiceLocator()->get('Config');
+        return $config['wtngrm']['gearman-adapter']['dispatcherHandler'];
     }
 
     /**

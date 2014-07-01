@@ -28,7 +28,15 @@ return array(
                         'port' => 4730
                     )
                 )
-            )
+            ),
+            'dispatcherHandler' => function ($job, $worker, $gearmanService, $serviceLocator) {
+                /** @var \Desyncr\Wtngrm\Gearman\Worker\GearmanWorker $worker */
+                $res = $worker->setUp($serviceLocator, $job);
+                if ($res !== false) {
+                    $worker->execute($job);
+                }
+                $worker->tearDown();
+            }
         )
     )
 );

@@ -26,6 +26,12 @@ use Zend\Stdlib\AbstractOptions;
  */
 class GearmanOptions extends AbstractOptions
 {
+
+    /**
+     * @var
+     */
+    protected $dispatcherHandler;
+
     /**
      * @var array
      */
@@ -55,6 +61,22 @@ class GearmanOptions extends AbstractOptions
     public function setServers($servers)
     {
         $this->servers = $servers;
+    }
+
+    /**
+     * @param mixed $dispatcherHandler Variable
+     */
+    public function setDispatcherHandler($dispatcherHandler)
+    {
+        $this->dispatcherHandler = $dispatcherHandler;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDispatcherHandler()
+    {
+        return $this->dispatcherHandler;
     }
 }
  
